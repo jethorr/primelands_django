@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+    <link rel="stylesheet" type=""text/css" href="{% static 'page/main.css' %}">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+
+   
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Primeland Realty</title>
+    {% endif %}
+</head>
+<body>
+     <!-- HTML -->
+   
+    <div class="wrapper">
+        <div class="content">
+            <div class="content-inner">
+                <div class="page-name">
+                    {% if title %}
+                        <h1>{{ title }}</h1>
+                    {% endif %}
+                </div>
+                <div class="content-right">
+                    {% block user %}
+                        <div class="user">
+                            <div class="user-info">
+                                <h6>Agent Name:  </h6>
+                                <h6>PRC License: </h6>
+                                <h6>Realty: </h6>
+                                <h6>Account Type: </h6>
+                            </div>
+                        </div>
+                        <div class="user-dp">
+                            <img src="{% static 'page/logo.jpeg' %}" alt="LOGO">
+                        </div>
+                    {% endblock user %}
+                </div>
+            </div>
+            
+        </div>
+        <nav class="sidebar">
+            <header>
+                <div class="image-text">
+                    <span class="image">
+                        <img src="{% static 'page/logo.jpeg' %}" alt="LOGO">
+                    </span>
+                    <div class="text header-text">
+                        <span class="name">Primeland</span>
+                        <span class="name2">Realty</span>
+                    </div>
+                   
+                </div>
+            </header>
+            
+            <div class="menu-bar">
+                <div class="menu">
+                    <ul class="menu-links">
+                        <li class="nav-link">
+                            <a href="{% url 'page-sales' %}">
+                                <i class="fa-solid fa-hand-holding-dollar icon"></i>
+                                <span class="text nav-text">My Sales</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{% url 'page-search' %}">
+                                <i class="fa-solid fa-magnifying-glass-location icon"></i>
+                                <span class="text nav-text">Property Search</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{% url 'page-reports' %}">
+                                <i class="fa-sharp fa-solid fa-flag icon"></i>
+                                <span class="text nav-text">Reports</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{% url 'page-listing' %}">
+                                <i class="fa-solid fa-list-ul icon"></i>
+                                <span class="text nav-text">Manage Property Listing</span>
+                            </a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="{% url 'page-management' %}">
+                                <i class="fa-regular fa-users icon"></i>
+                                <span class="text nav-text">Account Management</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <ul class="dashboard">
+                        <li class="nav-link">
+                            <a href="{% url 'page-dashboard' %}">
+                                <i class="fa-solid fa-table-columns icon"></i>
+                                <span class="text nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
+
+        <div class="dropdown" onclick="toggleMenu()">
+            <a href="#" ><i class="fa-solid fa-circle-chevron-down icon" ></i></a>
+        </div>
+        <div class="sub-menu-wrap" id="subMenu">
+            <div class="sub-menu">
+                <div class="menu-option">
+                    <a href="" class="sub-menu-links">
+                        <i class="fa-sharp fa-solid fa-user-tie"></i>
+                        <p>Profile</p>
+                    </a>
+                    <a href="" class="sub-menu-links">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        <p>Logout</p>
+                    </a>
+                </div>
+            </div> 
+        </div>
+    </div>
+     {% block content %}{% endblock %}
+     <script>
+         let subMenu = document.getElementById("subMenu")
+         function toggleMenu(){
+             subMenu.classList.toggle("open-menu");
+         }
+     </script>
+</body> 
+</html>
